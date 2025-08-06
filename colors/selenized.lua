@@ -18,11 +18,11 @@ local colors = {
         bg_0       = '#103c48',
         bg_1       = '#174956',
         bg_2       = '#325b66',
+        bg_15      = '#14404b', -- bg_1 12% darker for subtle highlighting of embedded, selectable blocks
         dim_0      = '#72898f',
+        dim_1      = '#90998f', -- yellowish dim_0 for things like autocomplete previews
         fg_0       = '#adbcbc',
         fg_1       = '#cad8d9',
-        bg_15      = '#14404b', -- bg_1 12% darker for subtle highlighting of embedded, selectable blocks
-        dim_1      = '#90998f', -- yellowish dim_0 for things like autocomplete previews
         red        = '#fa5750',
         green      = '#75b938',
         yellow     = '#dbb32d',
@@ -44,11 +44,11 @@ local colors = {
         bg_0       = '#fbf3db',
         bg_1       = '#e9e4d0',
         bg_2       = '#cfcebe',
+        bg_15      = '#e9e4d0', -- TODO: bg_1 12% darker for subtle highlighting of embedded, selectable blocks
         dim_0      = '#909995',
+        dim_1      = '#909995', -- TODO: yellowish dim_0 for things like autocomplete previews
         fg_0       = '#53676d',
         fg_1       = '#3a4d53',
-        dim_1      = '#909995', -- TODO: yellowish dim_0 for things like autocomplete previews
-        bg_15      = '#e9e4d0', -- TODO: bg_1 12% darker for subtle highlighting of embedded, selectable blocks
         red        = '#d2212d',
         green      = '#489100',
         yellow     = '#ad8900',
@@ -221,6 +221,7 @@ local highlights = function(colors)
     hi['SnippyPlaceholder']            = 'SnippetTabstop'
     -- vim Copilot
     hi['CopilotSuggestion']            = 'Suggestion'
+    hi['CopilotChatHelp']              = { bg = colors.bg_15 }
 
     -- Built-in diagnostic
     hi['DiagnosticError']              = { fg = colors.red, bg = hi['SignColumn'].bg }
@@ -266,7 +267,8 @@ local highlights = function(colors)
     hi['CmpItemKindUnit']              = 'Special'
     hi['CmpItemKindValue']             = 'Identifier'
     hi['CmpItemKindVariable']          = 'Delimiter'
-    hi['CmpItemKindCopilot']           = 'Structure'
+    hi['CmpItemKindCopilot']           = 'CmpItemKindStruct'
+    hi['CmpItemKindWordPress']         = 'CmpItemKindConstant'
 
     -- Git Signs
     hi['GitSignsAdd']                  = { fg = colors.green, bg = colors.bg_1 }
@@ -377,11 +379,14 @@ local highlights = function(colors)
     hi['@tag.delimiter']               = 'Delimiter'  -- XML-style tag delimiters
 
     -- Markup
-    hi['@markup.raw']                  = { bg = colors.bg_15 }
+    hi['@markup.raw.block.vimdoc']     = { bg = colors.bg_15 }
     hi['@markup.link']                 = 'Identifier'
     hi['@markup.heading']              = { fg = colors.fg_1, bold = true }
     hi['@markup.link.url']             = 'Underlined'
     hi['@markup.underline']            = 'Underlined'
+
+    -- render-markdown.nvim
+    hi['RenderMarkdownCode']           = { bg = colors.bg_15 }
 
     -- LSP semantic tokens
     hi['@lsp.type.comment']            = {}              -- reset since it interferes with the `@comment` group
