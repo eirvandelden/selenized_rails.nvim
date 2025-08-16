@@ -12,6 +12,21 @@ local fn = vim.fn
 
 local background = vim.o.background or 'dark'
 
+-- Allow choosing between light/white and dark/black based on background
+local resolve_variant = function(bg)
+  if bg == 'light' then
+    local v = vim.g.selenized_light_variant or 'light' -- allowed: 'light' | 'white'
+    if v ~= 'light' and v ~= 'white' then v = 'light' end
+    return v
+  else
+    local v = vim.g.selenized_dark_variant or 'black'   -- allowed: 'dark' | 'black'
+    if v ~= 'dark' and v ~= 'black' then v = 'dark' end
+    return v
+  end
+end
+
+local variant = resolve_variant(background)
+
 local none = 'none'
 local colors = {
     dark = {
@@ -66,10 +81,62 @@ local colors = {
         br_orange  = '#bc5819',
         br_violet  = '#825dc0',
         deep_dark  = '#181818',
-    }
+    },
+    black = {
+        bg_0       = '#181818',
+        bg_1       = '#252525',
+        bg_2       = '#3b3b3b',
+        bg_15      = '#252525', -- TODO: bg_1 12% darker for subtle highlighting of embedded, selectable blocks
+        dim_0      = '#777777',
+        dim_1      = '#777777', -- TODO: yellowish dim_0 for things like autocomplete previews
+        fg_0       = '#b9b9b9',
+        fg_1       = '#dedede',
+        red        = '#ed4a46',
+        green      = '#70b433',
+        yellow     = '#dbb32d',
+        blue       = '#368aeb',
+        magenta    = '#eb6eb7',
+        cyan       = '#3fc5b7',
+        orange     = '#e67f43',
+        violet     = '#a580e2',
+        br_red     = '#ff5e56',
+        br_green   = '#83c746',
+        br_yellow  = '#efc541',
+        br_blue    = '#4f9cfe',
+        br_magenta = '#ff81ca',
+        br_cyan    = '#56d8c9',
+        br_orange  = '#fa9153',
+        br_violet  = '#b891f5',
+    },
+    white = {
+        bg_0       = '#ffffff',
+        bg_1       = '#ebebeb',
+        bg_2       = '#cdcdcd',
+        bg_15      = '#ebebeb', -- TODO: bg_1 12% darker for subtle highlighting of embedded, selectable blocks
+        dim_0      = '#878787',
+        dim_1      = '#878787', -- TODO: yellowish dim_0 for things like autocomplete previews
+        fg_0       = '#474747',
+        fg_1       = '#282828',
+        red        = '#d6000c',
+        green      = '#1d9700',
+        yellow     = '#c49700',
+        blue       = '#0064e4',
+        magenta    = '#dd0f9d',
+        cyan       = '#00ad9c',
+        orange     = '#d04a00',
+        violet     = '#7f51d6',
+        br_red     = '#bf0000',
+        br_green   = '#008400',
+        br_yellow  = '#af8500',
+        br_blue    = '#0054cf',
+        br_magenta = '#c7008b',
+        br_cyan    = '#009a8a',
+        br_orange  = '#ba3700',
+        br_violet  = '#6b40c3',
+    },
 }
 _G.selenized.color_scheme = colors
-_G.selenized.colors = colors[background]
+_G.selenized.colors = colors[variant]
 
 local highlight = function(name, val)
     val = val or { fg = 'fg', bg = 'bg' }
@@ -417,4 +484,4 @@ local highlights = function(colors)
     end
     _G.selenized.colors = colors
 end
-highlights(colors[background])
+highlights(colors[variant])

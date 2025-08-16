@@ -19,11 +19,13 @@
 Install the theme with your preferred package manager.
 
 [lazy.nvim](https://github.com/folke/lazy.nvim)
+
 ```lua
 { "calind/selenized.nvim" }
 ```
 
 [packer.nvim](https://github.com/wbthomason/packer.nvim)
+
 ```lua
 use { "calind/selenized.nvim" }
 ```
@@ -31,7 +33,6 @@ use { "calind/selenized.nvim" }
 ## Usage
 
 Using vimL:
-
 
 ```vim
 colorscheme selenized
@@ -45,4 +46,4 @@ vim.cmd.colorscheme "selenized"
 
 ## Acknowlegement
 
-This color scheme is based on https://github.com/jan-warchol/selenized.
+This color scheme is based on <https://github.com/jan-warchol/selenized>.
