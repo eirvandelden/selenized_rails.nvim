@@ -232,10 +232,10 @@ local highlights = function(colors)
 	hi["SpecialChar"] = { fg = colors.violet, bg = none }
 	hi["Identifier"] = { fg = colors.br_blue, bg = none }
 	hi["Function"] = "Identifier"
-	hi["Statement"] = { fg = colors.br_yellow, bg = none }
+	hi["Statement"] = { fg = colors.br_yellow, bg = none, italic = true }
 	hi["Conditional"] = "Statement"
 	hi["Repeat"] = "Statement"
-	hi["Keyword"] = { fg = colors.br_yellow, bg = none, italic = true }
+	hi["Keyword"] = "Statement"
 	hi["Label"] = "Statement"
 	hi["Exception"] = "Statement"
 	hi["Operator"] = "Statement"
