@@ -347,7 +347,7 @@ local highlights = function(colors)
 	hi["GitSignsChange"] = { fg = colors.blue, bg = colors.bg_1 }
 
 	hi["ColorColumn"] = { fg = none, bg = colors.bg_1 }
-	hi["WinSeparator"] = { fg = colors.bg_2, bg = none, bold = true }
+	hi["WinSeparator"] = { fg = colors.bg_15, bg = none, bold = true }
 
 	-- Identifiers
 	hi["@variable"] = "Identifier" -- various variable names
