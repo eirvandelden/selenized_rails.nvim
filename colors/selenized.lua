@@ -185,7 +185,7 @@ local highlights = function(colors)
 	g.terminal_color_15 = colors.fg_1
 
 	local hi = {}
-	hi["Normal"] = { fg = colors.fg_0, bg = colors.bg_0 }
+	hi["Normal"] = { fg = colors.fg_1, bg = colors.bg_0 }
 
 	hi["IncSearch"] = { fg = colors.orange, bg = none, reverse = true }
 	hi["Search"] = { fg = colors.yellow, bg = none, reverse = true }
